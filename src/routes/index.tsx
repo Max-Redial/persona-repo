@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import logo from '../logo.svg'
+
 import PersonaBuilder from '@/components/Persona'
 
 export const Route = createFileRoute('/')({

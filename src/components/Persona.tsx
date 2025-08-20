@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Bot, Copy, Download } from "lucide-react"
+import { Bot } from "lucide-react"
 
 interface PersonaData {
   role: string
@@ -35,50 +35,11 @@ export default function PersonaBuilder() {
     language: "",
   })
 
-  const generateSystemPrompt = () => {
-    return `ROLE:
-${persona.role}
+  
 
-GENERAL GUIDELINES:
-${persona.general_guidelines}
 
-VOICE SPECIFIC INSTRUCTIONS:
-${persona.voice_instructions}
 
-STYLE:
-${persona.style}
 
-CALL FLOW OBJECTIVE:
-${persona.call_flow_objective}
-
-OFF SCOPE QUESTIONS:
-${persona.off_scope_questions}
-
-USER CONSIDERATIONS:
-${persona.user_considerations}
-
-CLOSING:
-${persona.closing}
-
-VOICE SETTINGS:
-- Gender: ${persona.voice_gender}
-- Language: ${persona.language}`
-  }
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(generateSystemPrompt())
-  }
-
-  const exportPersona = () => {
-    const dataStr = JSON.stringify(persona, null, 2)
-    const dataUri = "data:application/json;charset=utf-8," + encodeURIComponent(dataStr)
-    const exportFileDefaultName = `persona-${Date.now()}.json`
-
-    const linkElement = document.createElement("a")
-    linkElement.setAttribute("href", dataUri)
-    linkElement.setAttribute("download", exportFileDefaultName)
-    linkElement.click()
-  }
 
   return (
     <div className="min-h-screen bg-background">
